@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css?v=4">
-<link rel="stylesheet" href="assets/css/contato.css?v=1">
+<link rel="stylesheet" href="assets/css/contato.css?v=3">
 </head>
 <body class="ct">
 
@@ -96,40 +96,43 @@
 
   <div class="ct-letter-wrap">
     <!-- Netlify Forms: as mensagens aparecem no painel da Netlify e são enviadas para o e-mail da Elaine -->
-    <form class="ct-letter" name="contato" method="POST" action="obrigado.html" data-netlify="true" netlify-honeypot="empresa" data-ct-form>
+    <form class="ct-form" name="contato" method="POST" action="obrigado.html" data-netlify="true" netlify-honeypot="empresa" data-ct-form>
       <input type="hidden" name="form-name" value="contato">
       <p class="ct-hp" aria-hidden="true"><label>Não preencha: <input name="empresa" tabindex="-1" autocomplete="off"></label></p>
 
-      <p class="ct-greeting">Querida Elaine,</p>
-
-      <div class="ct-fields">
-        <label class="ct-field">
-          <span>Meu nome é</span>
-          <input type="text" name="nome" placeholder="seu nome completo" autocomplete="name" required>
-        </label>
-        <label class="ct-field">
-          <span>e meu e-mail é</span>
-          <input type="email" name="email" placeholder="seu@email.com" autocomplete="email" required>
-        </label>
-        <fieldset class="ct-field ct-topics">
-          <legend>Quero falar sobre</legend>
-          <label><input type="radio" name="assunto" value="Consultas" checked><span>Consultas</span></label>
-          <label><input type="radio" name="assunto" value="Cursos e Formação"><span>Cursos e Formação</span></label>
-          <label><input type="radio" name="assunto" value="O Céu Me Contou"><span>O Céu Me Contou</span></label>
-          <label><input type="radio" name="assunto" value="Convites e Parcerias"><span>Convites e Parcerias</span></label>
-          <label><input type="radio" name="assunto" value="Outro"><span>Outro</span></label>
-        </fieldset>
-        <label class="ct-field ct-field--msg">
-          <span class="ct-sr">Mensagem</span>
-          <textarea name="mensagem" rows="6" placeholder="Escreva sua mensagem aqui..." required></textarea>
-        </label>
+      <div class="ct-row">
+        <div class="ct-field">
+          <label for="ct-nome">Nome</label>
+          <input type="text" id="ct-nome" name="nome" placeholder="Seu nome completo" autocomplete="name" required>
+        </div>
+        <div class="ct-field">
+          <label for="ct-email">E-mail</label>
+          <input type="email" id="ct-email" name="email" placeholder="seu@email.com" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="ct-field">
+        <label for="ct-assunto">Assunto</label>
+        <select id="ct-assunto" name="assunto">
+          <option>Consultas</option>
+          <option>Cursos e Formação</option>
+          <option>O Céu Me Contou</option>
+          <option>Convites e Parcerias</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="ct-field">
+        <label for="ct-mensagem">Mensagem</label>
+        <textarea id="ct-mensagem" name="mensagem" rows="6" placeholder="Escreva sua mensagem aqui..." required></textarea>
       </div>
 
-      <div class="ct-letter-foot">
-        <p class="ct-signoff">Com carinho,<br><span data-ct-sign>…</span></p>
-        <button type="submit" class="ct-seal" data-ct-submit>
-          <span class="ct-seal-disc" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 L14 10 L21 12 L14 14 L12 21 L10 14 L3 12 L10 10 Z"/></svg></span>
-          <span class="ct-seal-label">Enviar mensagem</span>
+      <div class="ct-form-foot">
+        <p class="ct-form-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Seus dados são usados apenas para responder à sua mensagem.
+        </p>
+        <button type="submit" class="btn btn-primary ct-submit" data-ct-submit>
+          Enviar mensagem
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
         </button>
       </div>
       <p class="ct-status" role="status" data-ct-status></p>
@@ -146,6 +149,6 @@
 
 <script src="assets/js/footer.js?v=5"></script>
 <script src="assets/js/script.js" defer></script>
-<script src="assets/js/contato.js?v=1" defer></script>
+<script src="assets/js/contato.js?v=2" defer></script>
 </body>
 </html>
