@@ -1,0 +1,150 @@
+/* Celular compacto — carregado por último em todas as páginas.
+   Nada é removido: listas de cards viram carrosséis de deslizar, os espaços
+   entre seções diminuem e as imagens de topo ficam menores. Só vale até 560px. */
+
+@media (max-width: 560px) {
+
+  /* ── ritmo vertical ── */
+  body .section { padding-top: 52px; padding-bottom: 52px; }
+  body .section-head { margin-bottom: 26px; }
+  body .section-head p { margin-top: 10px; font-size: .94rem; }
+  body .section-head h2::after { margin-top: 14px; }
+
+  /* ── carrosséis: os cards passam para o lado, com o próximo aparecendo na borda ── */
+  body .hm-paths-grid,
+  body .hm-voices-grid,
+  body .hm-reading-grid,
+  body .oc2-unique-grid,
+  body .fp-features,
+  body .fp-levels,
+  body .cb-method,
+  body .cs-grid,
+  body .oc2-steps,
+  body .cb-pay-grid,
+  body .sb-bridge-grid,
+  body .rd-more .rd-grid {
+    display: flex !important; flex-wrap: nowrap; align-items: stretch; gap: 14px;
+    overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    margin-left: -24px !important; margin-right: -24px !important; max-width: none !important;
+    padding: 6px 24px 22px !important; scroll-padding: 0 24px;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  body .hm-paths-grid::-webkit-scrollbar, body .hm-voices-grid::-webkit-scrollbar, body .hm-reading-grid::-webkit-scrollbar,
+  body .oc2-unique-grid::-webkit-scrollbar, body .fp-features::-webkit-scrollbar, body .fp-levels::-webkit-scrollbar,
+  body .cb-method::-webkit-scrollbar, body .cs-grid::-webkit-scrollbar, body .oc2-steps::-webkit-scrollbar, body .cb-pay-grid::-webkit-scrollbar, body .sb-bridge-grid::-webkit-scrollbar, body .rd-more .rd-grid::-webkit-scrollbar { display: none; }
+  body .hm-paths-grid > *, body .hm-voices-grid > *, body .hm-reading-grid > *, body .oc2-unique-grid > *,
+  body .fp-features > *, body .fp-levels > *, body .cb-method > *, body .rd-more .rd-grid > * {
+    flex: 0 0 80%; scroll-snap-align: start; margin: 0 !important; transform: none;
+  }
+  body .cs-grid > *, body .cb-pay-grid > *, body .sb-bridge-grid > .sb-side { flex: 0 0 86%; scroll-snap-align: start; }
+  body .oc2-steps > * { flex: 0 0 72%; scroll-snap-align: start; margin: 0; }
+  body .sb-bridge-mid { display: none; }
+  /* cada card na altura do próprio conteúdo, sem sobra de espaço */
+  body .cs-grid, body .cb-pay-grid, body .sb-bridge-grid { align-items: flex-start; }
+  body .cb-pay-method { margin-top: 12px; }
+  body .sb-chips { gap: 8px; }
+  body .sb-chips li { padding: 9px 15px; font-size: .92rem; }
+  body .oc2-step { display: block; text-align: left; padding: 22px 20px; border-radius: 18px; background: var(--paper); border: 1px solid var(--line); }
+  body .oc2-step-icon { margin: 0 0 14px; }
+  body .oc2-step-num { display: block; font-family: 'Fraunces', serif; color: var(--accent-deep); font-size: .9rem; font-weight: 600; margin-bottom: 4px; }
+  body .fp-levels::before { display: none; }
+
+
+  /* ── cards mais enxutos ── */
+  body .hm-path { min-height: 0; padding: 26px 22px 22px; }
+  body .hm-path-icon { width: 48px; height: 48px; margin-bottom: 18px; }
+  body .hm-voice { padding: 34px 22px 22px; gap: 18px; }
+  body .hm-voice blockquote { font-size: 1rem; }
+  body .hm-article { min-height: 0; padding: 22px; }
+  body .cs-card { padding: 30px 22px 22px; }
+  body .cs-media { margin: -30px -22px 0; aspect-ratio: 16 / 8; }
+  body .cs-card h3 { font-size: 1.28rem; }
+  body .cs-desc { margin-bottom: 14px; font-size: .9rem; }
+  body .cs-list { gap: 8px; margin-bottom: 18px; }
+  body .cs-foot { padding-top: 16px; }
+  body .oc2-card { padding: 24px 20px; }
+  body .oc2-card-icon { width: 50px; height: 50px; margin-bottom: 16px; }
+  body .fp-level { padding: 26px 22px; }
+  body .fp-level-num { font-size: 3rem; }
+  body .fp-feature, body .cb-method-card { padding: 24px 20px; }
+  body .cb-method-card .cs-icon { width: 48px; height: 48px; margin-bottom: 14px; }
+
+  /* ── topos menores ── */
+  body .cs-hero { padding-top: 56px; padding-bottom: 56px; }
+  body .fp-hero { padding-bottom: 110px; }
+  body .hm-hero { padding-top: 56px; padding-bottom: 90px; }
+  body .oc2-hero { padding-bottom: 140px; }
+  body .oc2-hero-stage { max-width: 250px; }
+  body .sb-hero { padding-top: 40px; padding-bottom: 110px; }
+  body .sb-hero-visual { max-width: 250px; }
+  body .sm-hero { padding-top: 36px; padding-bottom: 50px; }
+  body .sm-cover { max-width: 210px; }
+  body .ag-hero { padding-top: 40px; padding-bottom: 50px; }
+  body .ag-wheel { width: 230px; margin-bottom: 18px; }
+  body .ct-hero { padding-top: 56px; padding-bottom: 140px; }
+  body .rd-hero { padding-top: 60px; padding-bottom: 50px; }
+
+  /* ── listas longas mais apertadas ── */
+  body .oc2-steps { gap: 18px; }
+  body .cb-topics { gap: 8px; }
+  body .cb-topics li { padding: 12px 16px; gap: 12px; }
+  body .cb-topics span { font-size: 1.2rem; width: 34px; }
+  body .cs-steps { gap: 22px; }
+  body .fp-intro { padding-top: 70px; }
+  body .fp-about-grid, body .oc2-author-grid, body .sb-story-grid, body .hm-about-grid, body .cb-event-grid, body .cb-path-grid { gap: 32px; }
+  body .fp-photo, body .hm-portrait, body .oc2-polaroid { max-width: 260px; }
+  body .sb-story-photo { max-width: 240px; }
+  body .sb-teach-num { max-width: 170px; }
+  body .sb-teach-num strong { font-size: 3.6rem; }
+  body .sb-approach { padding: 70px 20px; }
+  body .hm-book { padding: 60px 20px; }
+  body .hm-book-visual { max-width: 240px; }
+  body .hm-feature { padding: 60px 20px; }
+  body .oc2-cta { padding-top: 200px; padding-bottom: 70px; }
+  body .cs-cta, body .hm-cta, body .sb-cta { padding-top: 64px; padding-bottom: 64px; }
+  body .oc2-manifesto { padding: 40px 20px 60px; }
+  body .oc2-flip-section { padding-top: 56px; padding-bottom: 50px; }
+  body .ct-card { padding: 24px 20px; }
+  body .ct-card > p { margin-bottom: 16px; }
+  body .ct-letter-section { padding-top: 60px; }
+
+  /* ── mais aperto nas páginas longas ── */
+  body .cb-topics { display: grid; grid-template-columns: 1fr 1fr; }
+  body .cb-topics li { flex-direction: column; align-items: flex-start; padding: 12px 14px; gap: 4px; }
+  body .section.dark .cb-topics p { font-size: .86rem; line-height: 1.4; }
+  body .cb-ticket-head { padding: 22px 22px 26px; }
+  body .cb-date-day { font-size: 3.4rem; }
+  body .cb-ticket-rows > div { padding: 10px 0; }
+  body .cb-pay { padding: 26px 20px 20px; }
+  body .cb-pay h3 { font-size: 1.5rem; margin-bottom: 12px; }
+  body .cb-offer { padding: 12px 0; }
+  body .oc2-polaroid { max-width: 210px; padding: 12px 12px 48px; }
+  body .fp-photo { max-width: 220px; }
+  body .hm-portrait { max-width: 230px; }
+  body .sb-story-photo { max-width: 210px; }
+  body .sb-teach-num { max-width: 130px; }
+  body .sb-teach-num strong { font-size: 2.8rem; }
+  body .sb-teach-num span { font-size: .62rem; }
+  body .oc2-price-list { gap: 8px; }
+  body .oc2-price-list li { padding: 10px 14px; font-size: .9rem; }
+  body .oc2-price-value { margin: 14px 0 12px; }
+  body .oc2-faq summary, body .cb-faq summary { padding-top: 16px; padding-bottom: 16px; font-size: 1rem; }
+
+  /* ── Sala de Leitura: textos em linha, miniatura ao lado ── */
+  body .rd-list { padding: 36px 16px 60px; }
+  body .rd-list .rd-grid { gap: 12px; }
+  body .rd-list .rd-card:not(.rd-card--featured) { flex-direction: row; border-radius: 16px; }
+  body .rd-list .rd-card:not(.rd-card--featured) .rd-card-img { flex: 0 0 104px; aspect-ratio: auto; }
+  body .rd-list .rd-card:not(.rd-card--featured) .rd-card-body { padding: 14px 14px 14px 16px; gap: 6px; }
+  body .rd-list .rd-card:not(.rd-card--featured) h3 { font-size: 1.02rem; }
+  body .rd-list .rd-card:not(.rd-card--featured) p { -webkit-line-clamp: 2; font-size: .84rem; }
+  body .rd-list .rd-card:not(.rd-card--featured) .rd-card-more { display: none; }
+  body .rd-card--featured { margin-bottom: 18px; }
+  body .rd-card--featured .rd-card-body { padding: 22px; }
+
+  /* ── texto do blog ── */
+  body .pt-body { font-size: 1.02rem; line-height: 1.75; }
+  body .pt-cover { margin-bottom: 32px; }
+  body .pt-head { margin-bottom: 26px; }
+  body .rd-more { padding: 56px 16px; }
+}
