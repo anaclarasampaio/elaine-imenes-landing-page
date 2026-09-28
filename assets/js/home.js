@@ -89,7 +89,7 @@
 
     gsap.from('.hm-path', { y: 80, opacity: 0, rotateX: -25, duration: 1, stagger: .12, ease: 'power3.out', scrollTrigger: st('.hm-paths-grid') });
 
-    gsap.from('.hm-book-copy > *', { x: -40, opacity: 0, duration: .8, stagger: .12, scrollTrigger: st('.hm-book') });
+    gsap.from('.hm-book-copy > *', { y: 30, opacity: 0, duration: .8, stagger: .12, scrollTrigger: st('.hm-book') });
     gsap.from('.hm-book-visual', { y: 100, rotateY: -30, opacity: 0, duration: 1.4, ease: 'expo.out', scrollTrigger: st('.hm-book') });
     gsap.from('.hm-bubble', { scale: 0, duration: .8, stagger: .15, ease: 'back.out(2)', scrollTrigger: st('.hm-book', 'top 60%') });
 

@@ -256,5 +256,5 @@ body.hm { overflow-x: clip; }
   .hm-stat { padding: 20px 18px; }
   .hm-stat:nth-child(even) { margin: 0; }
   .hm-stat strong { font-size: 1.6rem; }
-  .hm-hero-btns .btn { width: 100%; justify-content: center; }
+  .hm-hero-btns .btn, .hm-book-copy .btn, .hm-feature-copy .btn { width: 100%; justify-content: center; }
 }
