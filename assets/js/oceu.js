@@ -127,7 +127,6 @@
     var scene = document.getElementById('book3d');
     if (!scene) return;
     var book = scene.querySelector('.b3-book');
-    var stackL = scene.querySelector('.b3-stack--left');
 
     var pw = 0, ph = 0;
     var leaves = LEAVES.map(function (cfg, i) {
@@ -205,10 +204,20 @@
       var x = current === 0 ? -pw / 2 : 0;
       book.style.transition = animate ? 'transform 1s cubic-bezier(.6,.05,.3,1)' : 'none';
       book.style.setProperty('--shift', x + 'px');
-      // o bloco da esquerda só aparece depois que a capa pousa na mesa
-      stackL.style.transitionDelay = current > 0 && animate ? '1s' : '0s';
-      stackL.style.opacity = current > 0 ? 1 : 0;
+      // Lombada (só com o livro fechado) e bloco de páginas da esquerda (só aberto).
+      // São ligados por classes com um pequeno atraso, sem depender de transições:
+      // assim funciona igual no Safari do iPhone, que não esconde peças 3D por opacidade.
       book.classList.toggle('is-closed', current === 0);
+      clearTimeout(book._b3t);
+      if (current === 0) {
+        book.classList.remove('stack-on');
+        if (animate) book._b3t = setTimeout(function () { if (current === 0) book.classList.add('spine-on'); }, 600);
+        else book.classList.add('spine-on');
+      } else {
+        book.classList.remove('spine-on');
+        if (animate && !book.classList.contains('stack-on')) book._b3t = setTimeout(function () { if (current > 0) book.classList.add('stack-on'); }, 1000);
+        else book.classList.add('stack-on');
+      }
     }
 
     function updateUi() {

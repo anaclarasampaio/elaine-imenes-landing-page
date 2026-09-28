@@ -160,7 +160,9 @@
   transition: opacity .6s;
 }
 .b3-stack--right { left: 50%; }
-.b3-stack--left { right: 50%; top: 2px; height: calc(var(--ph) - 4px); width: calc(var(--pw) - 2px); opacity: 0; }
+.b3-stack--left { right: 50%; top: 2px; height: calc(var(--ph) - 4px); width: calc(var(--pw) - 2px); opacity: 0; visibility: hidden; }
+.b3-stack--left > .b3-edge { visibility: inherit; }
+.b3-book.stack-on .b3-stack--left { opacity: 1; visibility: visible; animation: b3FadeIn .5s ease both; }
 /* borda das folhas: só aparece quando se olha o livro de lado */
 .b3-edge {
   position: absolute; top: 0; height: 100%; width: var(--stack);
@@ -173,9 +175,14 @@
 .b3-spine {
   position: absolute; left: 50%; top: -7px; width: 0; height: calc(var(--ph) + 14px);
   transform-style: preserve-3d; transform: translateZ(var(--cover-z, 14px));
-  opacity: 0; transition: opacity .2s;
 }
-.b3-book.is-closed .b3-spine { opacity: 1; transition: opacity .3s .55s; }
+/* No Safari (iPhone), a opacidade de um elemento 3D não chega às peças 3D de dentro.
+   Por isso cada peça é escondida por si mesma, com opacity + visibility. */
+.b3-spine-a, .b3-spine-b, .b3-spine-a::after { visibility: hidden; }
+.b3-book.spine-on .b3-spine-a, .b3-book.spine-on .b3-spine-b, .b3-book.spine-on .b3-spine-a::after {
+  visibility: visible; animation: b3FadeIn .3s ease both;
+}
+@keyframes b3FadeIn { from { opacity: 0; } }
 .b3-spine-a, .b3-spine-b {
   position: absolute; top: 0; height: 100%; width: 12px;
   transform-style: preserve-3d; transform-origin: right center;
