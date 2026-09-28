@@ -12,7 +12,7 @@ Sala de Leitura, os "Textos recentes" da página inicial, o `sitemap.xml` e o
 ## Colocar no ar (Netlify) — uma vez só
 
 1. **Netlify → Add new site → Import from Git →** escolher o repositório
-   `anaclarasampaio/elaine-imenes`. Comando e pasta de publicação vêm do `netlify.toml`.
+   `anaclarasampaio/elaine-imenes-landing-page`. Comando e pasta de publicação vêm do `netlify.toml`.
 2. **Login do painel (GitHub OAuth).** No GitHub: *Settings → Developer settings →
    OAuth Apps → New OAuth App*.
    - Homepage URL: o endereço do site (ex.: `https://elaineimenes.netlify.app`)

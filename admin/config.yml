@@ -8,7 +8,7 @@
 
 backend:
   name: github
-  repo: anaclarasampaio/elaine-imenes
+  repo: anaclarasampaio/elaine-imenes-landing-page
   branch: main
   commit_messages:
     create: 'Sala de Leitura: novo texto "{{slug}}"'
