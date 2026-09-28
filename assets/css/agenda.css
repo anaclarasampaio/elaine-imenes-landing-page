@@ -114,7 +114,7 @@
 .ag-channel--wa { background: linear-gradient(135deg, #128c4a 0%, #25d366 100%); }
 .ag-channel-icon { width: 54px; height: 54px; border-radius: 16px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.18); }
 .ag-channel-icon svg { width: 26px; height: 26px; }
-.ag-channel-text { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.ag-channel-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .ag-channel-text strong { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 600; }
 .ag-channel-text small { font-size: .85rem; opacity: .85; }
 .ag-channel-arrow { font-size: 1.4rem; transition: transform .3s; }
@@ -135,6 +135,8 @@
   .ag-date { flex-direction: row; gap: 10px; justify-content: flex-start; padding: 12px 18px; align-items: baseline; }
   .ag-date-day { font-size: 2rem; }
   .ag-date-month, .ag-date-year { margin-top: 0; }
+  .ag-channel { padding: 20px 18px; gap: 14px; }
+  .ag-channel-icon { width: 46px; height: 46px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ag-wheel svg { transition: none; }

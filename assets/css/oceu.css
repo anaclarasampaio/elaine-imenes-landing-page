@@ -461,6 +461,10 @@
   .oc2-doodle { display: none; }
 }
 @media (max-width: 560px) {
+  /* livro menos deitado no celular, para as páginas parecerem maiores */
+  .b3-book { transform: translateX(var(--shift)) rotateX(20deg) rotateZ(-1deg); }
+  .b3-scene { perspective: 1400px; }
+  .oc2-flip-section { padding-left: 12px; padding-right: 12px; }
   .oc2-unique-grid { grid-template-columns: 1fr; }
   .oc2-hero-btns .btn { width: 100%; justify-content: center; }
     .oc2-cta { padding-top: 220px; }

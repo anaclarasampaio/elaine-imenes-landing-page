@@ -213,3 +213,4 @@
 @media (prefers-reduced-motion: reduce) {
   .sb-quote .w { opacity: 1; }
 }
+@media (max-width: 900px) { .sb-story-grid > *, .sb-teach-grid > *, .sb-hero-inner > * { min-width: 0; } .sb-story-photo { max-width: min(360px, 100%); } }

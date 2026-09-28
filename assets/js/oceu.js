@@ -159,13 +159,15 @@
 
     function layout() {
       var avail = scene.clientWidth;
-      pw = Math.max(130, Math.min(380, (avail - 30) / 2));
+      var narrow = avail < 600;
+      // no celular o livro aberto ocupa a largura toda
+      pw = Math.max(130, Math.min(380, (avail - (narrow ? 6 : 30)) / 2));
       ph = Math.round(pw * 660 / 520);
       book.style.setProperty('--pw', pw + 'px');
       book.style.setProperty('--ph', ph + 'px');
       book.style.setProperty('--stack', STACK + 'px');
       book.style.setProperty('--cover-z', (STACK + leaves.length * GAP + .6) + 'px');
-      scene.style.height = Math.round(ph * .92 + 70) + 'px';
+      scene.style.height = Math.round(ph * (narrow ? .98 : .92) + (narrow ? 40 : 70)) + 'px';
       var sw = pw / SLICES;
       leaves.forEach(function (leaf) {
         leaf.slices.forEach(function (s, k) {
