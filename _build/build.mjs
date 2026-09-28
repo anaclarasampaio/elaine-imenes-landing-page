@@ -198,3 +198,53 @@ ${posts.map((p) => `  <url><loc>${SITE_URL}/post/${p.slug}</loc><lastmod>${p.iso
 `);
 
 console.log(`Sala de Leitura: ${posts.length} texto(s) publicados.`);
+
+/* ── Agenda: eventos em content/eventos/*.md ──
+   Todos os eventos entram na página em ordem de data; o script da própria página
+   separa os próximos dos que já aconteceram, pela data de quem está visitando. */
+const EVENTS_DIR = path.join(ROOT, 'content', 'eventos');
+const TZ = 'America/Sao_Paulo';
+const fmt = (d, o) => new Intl.DateTimeFormat('pt-BR', { timeZone: TZ, ...o }).format(d);
+const gcal = (d) => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+const events = (fs.existsSync(EVENTS_DIR) ? fs.readdirSync(EVENTS_DIR).filter((f) => f.endsWith('.md')) : [])
+  .map((f) => ({ slug: slugOf(f), ...parseFrontMatter(fs.readFileSync(path.join(EVENTS_DIR, f), 'utf8')).data }))
+  .filter((e) => e.date && !e.draft)
+  .map((e) => {
+    const start = new Date(e.date);
+    const end = e.end ? new Date(e.end) : new Date(start.getTime() + 90 * 60000);
+    return { ...e, start, end };
+  })
+  .sort((a, b) => a.start - b.start);
+
+function eventCard(e) {
+  const link = rel(e.link || '', '');
+  const where = [e.format, e.place].filter(Boolean).join(' · ');
+  const cal = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    + `&text=${encodeURIComponent(e.title)}`
+    + `&dates=${gcal(e.start)}/${gcal(e.end)}`
+    + `&details=${encodeURIComponent((e.description || '') + (link && /^https?:/.test(link) ? `\n\n${link}` : ''))}`
+    + `&location=${encodeURIComponent(e.place || e.format || '')}`
+    + `&ctz=${TZ}`;
+  return `<article class="ag-event" data-start="${e.start.toISOString()}" data-end="${e.end.toISOString()}">
+        <div class="ag-date" aria-hidden="true">
+          <span class="ag-date-day">${fmt(e.start, { day: '2-digit' })}</span>
+          <span class="ag-date-month">${fmt(e.start, { month: 'short' }).replace('.', '')}</span>
+          <span class="ag-date-year">${fmt(e.start, { year: 'numeric' })}</span>
+        </div>
+        <div class="ag-info">
+          <div class="ag-tags">${e.type ? `<span class="ag-tag">${esc(e.type)}</span>` : ''}<span class="ag-status" data-status></span></div>
+          <h3>${esc(e.title)}</h3>
+          <p class="ag-when"><time datetime="${e.start.toISOString()}">${fmt(e.start, { weekday: 'long', day: 'numeric', month: 'long' })}, às ${fmt(e.start, { hour: '2-digit', minute: '2-digit' }).replace(':', 'h')}</time>${where ? ` · ${esc(where)}` : ''}</p>
+          ${e.description ? `<p class="ag-desc">${esc(e.description)}</p>` : ''}
+          <div class="ag-actions">
+            ${link ? `<a class="btn btn-primary ag-btn" href="${esc(link)}"${/^https?:/.test(link) ? ' target="_blank" rel="noopener"' : ''}>${esc(e.link_label || 'Saiba mais')}</a>` : ''}
+            <a class="ag-cal" href="${cal}" target="_blank" rel="noopener" data-upcoming-only>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"/></svg>
+              Adicionar à minha agenda
+            </a>
+          </div>
+        </div>
+      </article>`;
+}
+replaceBetween('agenda.html', 'EVENTS', events.map(eventCard).join('\n      '));
+console.log(`Agenda: ${events.length} evento(s).`);

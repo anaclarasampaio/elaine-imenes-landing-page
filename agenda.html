@@ -7,39 +7,111 @@
 <meta name="description" content="Próximos cursos, palestras, lives, congressos e eventos com Elaine Imenes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css?v=4">
+<link rel="stylesheet" href="assets/css/agenda.css?v=1">
 </head>
-<body>
+<body class="ag">
 
 <script src="assets/js/header.js?v=3" data-active="agenda"></script>
 
-<section class="page-header">
-  <span class="eyebrow">Agenda</span>
-  <h1>Próximos compromissos</h1>
-  <p>As datas de turmas, aulas e encontros ao vivo são anunciadas no Instagram e pelo WhatsApp.</p>
-</section>
-
-<section class="section">
-  <div class="container" style="max-width:720px; text-align:center;">
-    <div class="section-head">
-      <span class="eyebrow">Agenda</span>
-      <h2>Onde acompanhar as próximas datas</h2>
-      <p>Prefiro não deixar datas desatualizadas no ar. As chamadas de turma, aulas ao vivo e encontros saem sempre nestes dois canais — e é por eles que respondo mais rápido.</p>
+<!-- ═══ Hero: a roda do ano ═══ -->
+<section class="ag-hero">
+  <div class="ag-wheel" aria-hidden="true">
+    <svg viewBox="0 0 400 400">
+      <defs><path id="agRing" d="M200 200 m-160 0 a160 160 0 1 1 320 0 a160 160 0 1 1 -320 0"/></defs>
+      <circle cx="200" cy="200" r="186" class="ag-wheel-outer"/>
+      <circle cx="200" cy="200" r="132" class="ag-wheel-inner"/>
+      <g class="ag-wheel-ticks"></g>
+      <text class="ag-wheel-months"><textPath href="#agRing" textLength="1000">JAN · FEV · MAR · ABR · MAI · JUN · JUL · AGO · SET · OUT · NOV · DEZ ·</textPath></text>
+    </svg>
+    <span class="ag-wheel-marker"></span>
+    <div class="ag-wheel-center">
+      <span class="ag-wheel-today" data-today-day>—</span>
+      <span class="ag-wheel-month" data-today-month></span>
     </div>
-    <div class="hero-btns" style="justify-content:center;">
-      <a href="https://www.instagram.com/elaineimenes.astrologia/" class="btn btn-primary" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://wa.me/message/LV2XLCURCFYTF1" class="btn btn-outline" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+  <div class="ag-hero-inner">
+    <span class="eyebrow">Agenda</span>
+    <h1>Próximos <em>compromissos</em></h1>
+    <p>Turmas, aulas, lives e encontros ao vivo. As datas também são anunciadas no Instagram e pelo WhatsApp.</p>
+    <div class="ag-next" data-next hidden>
+      <span class="ag-next-label">Próximo encontro</span>
+      <strong data-next-title></strong>
+      <span class="ag-countdown" data-countdown></span>
     </div>
-    <p class="form-note" style="margin-top:36px;">
-      Para conhecer os programas que acontecem ao longo do ano, veja
-      <a href="cursos.html" style="color:var(--accent-deep); font-weight:600;">Cursos</a>.
-    </p>
   </div>
 </section>
 
-<script src="assets/js/footer.js?v=5"></script>
+<!-- ═══ Eventos (gerados por _build/build.mjs a partir de content/eventos) ═══ -->
+<section class="section ag-list-section">
+  <div class="container ag-container">
+    <div class="ag-group" data-group="upcoming">
+      <h2 class="ag-group-title">Próximas datas</h2>
+      <div class="ag-events" data-upcoming></div>
+      <div class="ag-empty" data-empty hidden>
+        <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="30"/><path d="M40 22 L44 36 L58 40 L44 44 L40 58 L36 44 L22 40 L36 36 Z"/></svg>
+        <h3>Nenhuma data marcada por enquanto</h3>
+        <p>As próximas turmas, aulas e encontros saem primeiro no Instagram e no WhatsApp. Acompanhe por lá para não perder.</p>
+      </div>
+    </div>
 
+    <div class="ag-group ag-group--past" data-group="past" hidden>
+      <h2 class="ag-group-title">Já aconteceu</h2>
+      <div class="ag-events" data-past></div>
+    </div>
+
+    <div class="ag-all" hidden>
+      <!-- EVENTS:START -->
+<article class="ag-event" data-start="2026-08-25T22:30:00.000Z" data-end="2026-08-26T00:00:00.000Z">
+        <div class="ag-date" aria-hidden="true">
+          <span class="ag-date-day">25</span>
+          <span class="ag-date-month">ago</span>
+          <span class="ag-date-year">2026</span>
+        </div>
+        <div class="ag-info">
+          <div class="ag-tags"><span class="ag-tag">Aula</span><span class="ag-status" data-status></span></div>
+          <h3>Aula inaugural gratuita do Nível Básico</h3>
+          <p class="ag-when"><time datetime="2026-08-25T22:30:00.000Z">terça-feira, 25 de agosto, às 19h30</time> · Online · Ao vivo no YouTube</p>
+          <p class="ag-desc">Conheça a proposta, a organização e o caminho de estudos da Formação em Astrologia. A participação é gratuita e não gera compromisso de matrícula.</p>
+          <div class="ag-actions">
+            <a class="btn btn-primary ag-btn" href="ciclo-basico.html">Conhecer o Nível Básico</a>
+            <a class="ag-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Aula%20inaugural%20gratuita%20do%20N%C3%ADvel%20B%C3%A1sico&dates=20260825T223000Z/20260826T000000Z&details=Conhe%C3%A7a%20a%20proposta%2C%20a%20organiza%C3%A7%C3%A3o%20e%20o%20caminho%20de%20estudos%20da%20Forma%C3%A7%C3%A3o%20em%20Astrologia.%20A%20participa%C3%A7%C3%A3o%20%C3%A9%20gratuita%20e%20n%C3%A3o%20gera%20compromisso%20de%20matr%C3%ADcula.&location=Ao%20vivo%20no%20YouTube&ctz=America/Sao_Paulo" target="_blank" rel="noopener" data-upcoming-only>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"/></svg>
+              Adicionar à minha agenda
+            </a>
+          </div>
+        </div>
+      </article>
+      <!-- EVENTS:END -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Canais ═══ -->
+<section class="section ag-channels">
+  <div class="section-head">
+    <span class="eyebrow">Onde acompanhar</span>
+    <h2>Onde acompanhar as próximas datas</h2>
+    <p>As chamadas de turma, aulas ao vivo e encontros saem sempre nestes dois canais — e é por eles que respondo mais rápido.</p>
+  </div>
+  <div class="container ag-channel-grid">
+    <a class="ag-channel ag-channel--ig" href="https://www.instagram.com/elaineimenes.astrologia/" target="_blank" rel="noopener">
+      <span class="ag-channel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></span>
+      <span class="ag-channel-text"><strong>Instagram</strong><small>@elaineimenes.astrologia</small></span>
+      <span class="ag-channel-arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="ag-channel ag-channel--wa" href="https://wa.me/message/LV2XLCURCFYTF1" target="_blank" rel="noopener">
+      <span class="ag-channel-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 2.12.56 4.12 1.53 5.85L0 24l6.3-1.65A12 12 0 0 0 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0zm0 21.82a9.8 9.8 0 0 1-5.03-1.39l-.36-.21-3.75.91.97-3.66-.23-.38A9.8 9.8 0 0 1 2.18 12c0-5.42 4.4-9.82 9.82-9.82S21.82 6.58 21.82 12 17.42 21.82 12 21.82zm5.39-7.34c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.28-.2-.57-.35z"/></svg></span>
+      <span class="ag-channel-text"><strong>WhatsApp</strong><small>Receba os avisos e tire dúvidas</small></span>
+      <span class="ag-channel-arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+  <p class="ag-note">Para conhecer os programas que acontecem ao longo do ano, veja <a href="cursos.html">Cursos</a>.</p>
+</section>
+
+<script src="assets/js/footer.js?v=5"></script>
 <script src="assets/js/script.js" defer></script>
+<script src="assets/js/agenda.js?v=1" defer></script>
 </body>
 </html>

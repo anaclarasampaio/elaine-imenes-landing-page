@@ -80,3 +80,63 @@ collections:
         name: original_url
         widget: hidden
         required: false
+
+  - name: eventos
+    label: Agenda
+    label_singular: evento
+    description: Aulas, turmas, lives e encontros. Os que já passaram saem sozinhos da lista de próximos.
+    folder: content/eventos
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    sortable_fields: ['date', 'title']
+    summary: '{{date | date("DD/MM/YYYY")}} · {{title}}'
+    fields:
+      - label: Nome do evento
+        name: title
+        widget: string
+      - label: Começa em
+        name: date
+        widget: datetime
+        date_format: DD/MM/YYYY
+        time_format: HH:mm
+      - label: Termina em
+        name: end
+        widget: datetime
+        date_format: DD/MM/YYYY
+        time_format: HH:mm
+        required: false
+        hint: Opcional. Se ficar vazio, o site considera 1h30 de duração.
+      - label: Tipo
+        name: type
+        widget: select
+        options: [Aula, Curso, Turma, Live, Palestra, Oficina, Congresso, Encontro]
+        required: false
+      - label: Formato
+        name: format
+        widget: select
+        options: [Online, Presencial, Online e presencial]
+        required: false
+      - label: Onde
+        name: place
+        widget: string
+        required: false
+        hint: 'Ex.: "Ao vivo no YouTube", "Zoom" ou o endereço do local.'
+      - label: Descrição
+        name: description
+        widget: text
+        required: false
+      - label: Link
+        name: link
+        widget: string
+        required: false
+        hint: Página de inscrição ou de mais informações (pode ser uma página do site, como ciclo-basico.html).
+      - label: Texto do botão
+        name: link_label
+        widget: string
+        required: false
+        default: Saiba mais
+      - label: Rascunho
+        name: draft
+        widget: boolean
+        default: false
+        required: false

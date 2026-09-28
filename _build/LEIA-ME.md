@@ -39,3 +39,21 @@ Sala de Leitura, os "Textos recentes" da página inicial, o `sitemap.xml` e o
 
 Para guardar sem publicar, ligue **Rascunho**. Para corrigir um texto, abra-o na lista,
 edite e publique de novo.
+
+## Agenda
+
+Os eventos ficam em `content/eventos/*.md` e são cadastrados no painel, em **Agenda → Novo evento**
+(nome, data e hora, tipo, formato, onde, descrição e link). A página separa sozinha os próximos
+eventos dos que já aconteceram, mostra quanto falta para o próximo e oferece o botão
+"Adicionar à minha agenda" (Google Agenda).
+
+## Formulário de contato (Netlify Forms)
+
+O formulário da página Contato já está pronto para o Netlify Forms (grátis até 100 mensagens por mês).
+Depois do primeiro deploy:
+
+1. **Netlify → Forms →** conferir se o formulário "contato" apareceu e ativar a detecção de formulários, se pedir.
+2. **Forms → Form notifications → Add notification → Email notification**, para
+   `elaineimenes.astrologia@gmail.com`.
+
+As mensagens também ficam guardadas no painel da Netlify. Há um campo escondido contra spam.
