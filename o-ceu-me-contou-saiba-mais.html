@@ -7,93 +7,111 @@
 <meta name="description" content="O Céu me Contou: um livro infantil individualizado, criado a partir da leitura do mapa astral da criança e de uma consulta com a família. Promoção de lançamento.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css?v=7">
+<link rel="stylesheet" href="assets/css/saiba-mais.css?v=2">
 </head>
-<body>
+<body class="sm">
 
 <script src="assets/js/header.js?v=3" data-active="oceu"></script>
 
-<section class="section">
-  <div class="container">
-    <div class="book-hero">
-      <div class="book-cover">
-        <img src="assets/img/livro-capa-mockup.jpg" alt="Capa do livro O Céu me Contou, sobre um pedestal">
-      </div>
-      <div>
-        <h1 style="font-size:clamp(2rem,4vw,2.7rem); margin-bottom:20px;">O Céu me Contou</h1>
-        <p style="color:var(--ink-soft); font-size:1.02rem; line-height:1.8; margin-bottom:16px;">Um livro infantil individualizado, criado a partir da leitura do mapa astral da criança e de uma consulta com a família.</p>
-        <p style="color:var(--ink-soft); font-size:1.02rem; line-height:1.8; margin-bottom:28px;">Mais do que um livro com o nome da criança, O Céu Me Contou é uma forma de olhar para a sua história com delicadeza, reconhecendo traços, potências e modos de estar no mundo — sem prender a criança a rótulos ou previsões.</p>
-        <a href="https://wa.me/message/LV2XLCURCFYTF1" class="btn btn-primary" target="_blank" rel="noopener">Quero encomendar o livro</a>
+<!-- ═══ Hero: manchas de aquarela ═══ -->
+<section class="sm-hero">
+  <div class="sm-wash" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <div class="container sm-hero-grid">
+    <figure class="sm-cover">
+      <img src="assets/img/livro-capa-mockup.jpg" alt="Capa do livro O Céu me Contou, sobre um pedestal">
+    </figure>
+    <div class="sm-hero-copy">
+      <nav class="sm-crumbs" aria-label="Você está em"><a href="o-ceu-me-contou.html">O Céu Me Contou</a> <span aria-hidden="true">/</span> Saiba mais</nav>
+      <h1>O Céu me <em>Contou</em></h1>
+      <p class="sm-lead">Um livro infantil individualizado, criado a partir da leitura do mapa astral da criança e de uma consulta com a família.</p>
+      <p>Mais do que um livro com o nome da criança, O Céu Me Contou é uma forma de olhar para a sua história com delicadeza, reconhecendo traços, potências e modos de estar no mundo — sem prender a criança a rótulos ou previsões.</p>
+      <div class="sm-btns">
+        <a href="https://wa.me/message/LV2XLCURCFYTF1" class="btn btn-gold" target="_blank" rel="noopener">
+          Quero encomendar o livro
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#fotos" class="btn sm-btn-line">Ver as fotos</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section alt">
+<!-- ═══ Galeria ═══ -->
+<section class="section sm-gallery-section" id="fotos">
   <div class="section-head">
     <span class="eyebrow">Por dentro do livro</span>
     <h2>Fotos reais de um exemplar</h2>
     <p>Um vislumbre do acabamento, do papel e das ilustrações — cada livro nasce assim, com todo esse cuidado.</p>
   </div>
-  <div class="container oc-gallery">
-    <figure>
-      <a href="assets/img/livro-real-capa.jpg" target="_blank" rel="noopener">
-        <img src="assets/img/livro-real-capa.jpg" alt="Capa do livro O Céu me Contou">
-      </a>
+  <div class="container sm-gallery" data-gallery>
+    <figure class="sm-shot sm-shot--tall">
+      <a href="assets/img/livro-real-capa.jpg"><img src="assets/img/livro-real-capa.jpg" alt="Capa do livro O Céu me Contou" loading="lazy"></a>
       <figcaption>Capa</figcaption>
     </figure>
-    <figure>
-      <a href="assets/img/livro-real-titulo.jpg" target="_blank" rel="noopener">
-        <img src="assets/img/livro-real-titulo.jpg" alt="Folha de rosto do livro O Céu me Contou, com o título e os créditos">
-      </a>
+    <figure class="sm-shot">
+      <a href="assets/img/livro-real-titulo.jpg"><img src="assets/img/livro-real-titulo.jpg" alt="Folha de rosto do livro O Céu me Contou, com o título e os créditos" loading="lazy"></a>
       <figcaption>Folha de rosto</figcaption>
     </figure>
-    <figure>
-      <a href="assets/img/livro-real-sol-cancer.jpg" target="_blank" rel="noopener">
-        <img src="assets/img/livro-real-sol-cancer.jpg" alt="Página dupla sobre o Sol e o signo de Câncer">
-      </a>
+    <figure class="sm-shot">
+      <a href="assets/img/livro-real-sol-cancer.jpg"><img src="assets/img/livro-real-sol-cancer.jpg" alt="Página dupla sobre o Sol e o signo de Câncer" loading="lazy"></a>
       <figcaption>Sol · Câncer</figcaption>
     </figure>
-    <figure>
-      <a href="assets/img/livro-real-marte-aries.jpg" target="_blank" rel="noopener">
-        <img src="assets/img/livro-real-marte-aries.jpg" alt="Página dupla sobre Marte e o signo de Áries">
-      </a>
-      <figcaption>Marte · Áries</figcaption>
-    </figure>
-    <figure>
-      <a href="assets/img/livro-real-netuno-peixes.jpg" target="_blank" rel="noopener">
-        <img src="assets/img/livro-real-netuno-peixes.jpg" alt="Página dupla sobre Netuno e o signo de Peixes">
-      </a>
+    <figure class="sm-shot">
+      <a href="assets/img/livro-real-netuno-peixes.jpg"><img src="assets/img/livro-real-netuno-peixes.jpg" alt="Página dupla sobre Netuno e o signo de Peixes" loading="lazy"></a>
       <figcaption>Netuno · Peixes</figcaption>
     </figure>
-    <figure>
-      <a href="assets/img/livro-real-contracapa.jpg" target="_blank" rel="noopener">
-        <img src="assets/img/livro-real-contracapa.jpg" alt="Verso do livro fechado, com a roda zodiacal ilustrada">
-      </a>
+    <figure class="sm-shot sm-shot--tall">
+      <a href="assets/img/livro-real-marte-aries.jpg"><img src="assets/img/livro-real-marte-aries.jpg" alt="Página dupla sobre Marte e o signo de Áries" loading="lazy"></a>
+      <figcaption>Marte · Áries</figcaption>
+    </figure>
+    <figure class="sm-shot sm-shot--wide">
+      <a href="assets/img/livro-real-contracapa.jpg"><img src="assets/img/livro-real-contracapa.jpg" alt="Verso do livro fechado, com a roda zodiacal ilustrada" loading="lazy"></a>
       <figcaption>Verso</figcaption>
     </figure>
   </div>
+  <p class="sm-hint">Toque em uma foto para ver maior.</p>
 </section>
 
-<section class="section alt">
-  <div class="container" style="max-width:520px;">
-    <div class="oc-promo-card">
-      <span class="eyebrow">Promoção de lançamento</span>
-      <h2 class="oc-modal-price">R$ 900</h2>
-      <p class="oc-modal-lead">O valor promocional de lançamento inclui:</p>
-      <ul class="oc-modal-list">
-        <li>a consulta astrológica da criança com a(s) pessoa(s) responsável(is);</li>
-        <li>o livro físico em capa dura, feito inteiramente a partir dessa consulta.</li>
-      </ul>
-      <p class="oc-modal-note">Não é um livro pronto com informações inseridas depois. Cada exemplar nasce de um processo cuidadoso, individualizado e criado especialmente para a criança.</p>
-      <a href="https://wa.me/message/LV2XLCURCFYTF1" class="btn btn-primary">Quero encomendar o livro</a>
+<!-- ═══ Preço ═══ -->
+<section class="section sm-price-section">
+  <div class="container">
+    <div class="sm-price">
+      <div class="sm-price-main">
+        <span class="sm-badge">Promoção de lançamento</span>
+        <p class="sm-price-value"><span>R$</span> 900</p>
+        <p class="sm-price-lead">O valor promocional de lançamento inclui:</p>
+        <ul class="sm-price-list">
+          <li>a consulta astrológica da criança com a(s) pessoa(s) responsável(is);</li>
+          <li>o livro físico em capa dura, feito inteiramente a partir dessa consulta.</li>
+        </ul>
+      </div>
+      <div class="sm-price-side">
+        <p class="sm-price-note">Não é um livro pronto com informações inseridas depois. Cada exemplar nasce de um processo cuidadoso, individualizado e criado especialmente para a criança.</p>
+        <a href="https://wa.me/message/LV2XLCURCFYTF1" class="btn btn-gold" target="_blank" rel="noopener">
+          Quero encomendar o livro
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="o-ceu-me-contou.html" class="sm-back">← Voltar para O Céu Me Contou</a>
+      </div>
     </div>
   </div>
 </section>
 
-<script src="assets/js/footer.js?v=6"></script>
+<!-- ═══ Visualizador de fotos ═══ -->
+<div class="sm-lightbox" data-lightbox hidden role="dialog" aria-modal="true" aria-label="Foto do livro">
+  <button type="button" class="sm-lb-close" data-lb-close aria-label="Fechar">×</button>
+  <button type="button" class="sm-lb-nav sm-lb-prev" data-lb-prev aria-label="Foto anterior">‹</button>
+  <figure class="sm-lb-figure">
+    <img data-lb-img alt="">
+    <figcaption data-lb-cap></figcaption>
+  </figure>
+  <button type="button" class="sm-lb-nav sm-lb-next" data-lb-next aria-label="Próxima foto">›</button>
+</div>
 
+<script src="assets/js/footer.js?v=6"></script>
 <script src="assets/js/script.js" defer></script>
+<script src="assets/js/saiba-mais.js?v=1" defer></script>
 </body>
 </html>
