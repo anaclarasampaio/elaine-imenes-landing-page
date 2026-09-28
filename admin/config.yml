@@ -1,8 +1,9 @@
 # Painel de publicação da Sala de Leitura (Decap CMS).
 #
 # O painel grava cada texto como um arquivo Markdown no repositório do site.
-# A Netlify percebe a mudança, roda _build/build.mjs e publica a página nova
-# em cerca de um minuto.
+# A Vercel percebe a mudança, roda _build/build.mjs e publica a página nova
+# em cerca de um minuto. O login com o GitHub passa pelas funções em /api
+# (auth.js e callback.js); o endereço delas é definido em admin/index.html.
 #
 # Os caminhos abaixo partem da raiz do repositório (que é a raiz do site).
 
@@ -10,6 +11,7 @@ backend:
   name: github
   repo: anaclarasampaio/elaine-imenes-landing-page
   branch: main
+  auth_endpoint: api/auth
   commit_messages:
     create: 'Sala de Leitura: novo texto "{{slug}}"'
     update: 'Sala de Leitura: atualiza "{{slug}}"'

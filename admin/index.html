@@ -9,7 +9,15 @@
 </head>
 <body>
 <!-- Painel de publicação (Decap CMS). A configuração fica em config.yml, nesta mesma pasta. -->
+<script>window.CMS_MANUAL_INIT = true;</script>
 <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.16.3/dist/decap-cms.js"></script>
+<script>
+  // o login usa as funções /api deste mesmo site (Vercel), seja qual for o endereço
+  CMS.init({ config: { backend: {
+    name: 'github', repo: 'anaclarasampaio/elaine-imenes-landing-page', branch: 'main',
+    base_url: location.origin, auth_endpoint: 'api/auth'
+  } } });
+</script>
 <script>
   // a pré-visualização usa o mesmo visual das páginas dos textos
   CMS.registerPreviewStyle('../assets/css/style.css');

@@ -1,0 +1,150 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "node _build/build.mjs",
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/inicio"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/saladeleitura",
+      "destination": "/sala-de-leitura",
+      "permanent": true
+    },
+    {
+      "source": "/oceumecontou",
+      "destination": "/o-ceu-me-contou",
+      "permanent": true
+    },
+    {
+      "source": "/oceumecontou-saibamais",
+      "destination": "/o-ceu-me-contou-saiba-mais",
+      "permanent": true
+    },
+    {
+      "source": "/formação-profissional-em-astrologia",
+      "destination": "/cursos",
+      "permanent": true
+    },
+    {
+      "source": "/forma%C3%A7%C3%A3o-profissional-em-astrologia",
+      "destination": "/cursos",
+      "permanent": true
+    },
+    {
+      "source": "/depoimentos",
+      "destination": "/inicio#depoimentos",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/sala-de-leitura",
+      "permanent": true
+    },
+    {
+      "source": "/post/o-equilibrio-que-se-move-1",
+      "destination": "/post/o-equilibrio-que-se-move",
+      "permanent": true
+    },
+    {
+      "source": "/post/amamentacoo-lua-e-vinculos-o-alimento-que-vai-alem-do-leite",
+      "destination": "/post/amamentacao-lua-e-vinculos-o-alimento-que-vai-alem-do-leite",
+      "permanent": true
+    },
+    {
+      "source": "/post/para-que-servem-as-previsões-astrológicas",
+      "destination": "/post/para-que-servem-as-previsoes-astrologicas",
+      "permanent": true
+    },
+    {
+      "source": "/post/para-que-servem-as-previs%C3%B5es-astrol%C3%B3gicas",
+      "destination": "/post/para-que-servem-as-previsoes-astrologicas",
+      "permanent": true
+    },
+    {
+      "source": "/post/são-joão-xangô-astrologia-e-os-maias-o-céu-como-medida-da-vida-na-terra",
+      "destination": "/post/sao-joao-xango-astrologia-e-os-maias-o-ceu-como-medida-da-vida-na-terra",
+      "permanent": true
+    },
+    {
+      "source": "/post/s%C3%A3o-jo%C3%A3o-xang%C3%B4-astrologia-e-os-maias-o-c%C3%A9u-como-medida-da-vida-na-terra",
+      "destination": "/post/sao-joao-xango-astrologia-e-os-maias-o-ceu-como-medida-da-vida-na-terra",
+      "permanent": true
+    },
+    {
+      "source": "/post/o-mapa-dos-encontros-o-roteiro-da-atração-e-da-convivência",
+      "destination": "/post/o-mapa-dos-encontros-o-roteiro-da-atracao-e-da-convivencia",
+      "permanent": true
+    },
+    {
+      "source": "/post/o-mapa-dos-encontros-o-roteiro-da-atra%C3%A7%C3%A3o-e-da-conviv%C3%AAncia",
+      "destination": "/post/o-mapa-dos-encontros-o-roteiro-da-atracao-e-da-convivencia",
+      "permanent": true
+    },
+    {
+      "source": "/post/o-feminino-maternal-da-promessa-à-realidade-do-mapa",
+      "destination": "/post/o-feminino-maternal-da-promessa-a-realidade-do-mapa",
+      "permanent": true
+    },
+    {
+      "source": "/post/o-feminino-maternal-da-promessa-%C3%A0-realidade-do-mapa",
+      "destination": "/post/o-feminino-maternal-da-promessa-a-realidade-do-mapa",
+      "permanent": true
+    },
+    {
+      "source": "/post/o-guerreiro-o-orixá-e-a-lua-encontros-em-23-de-abril",
+      "destination": "/post/o-guerreiro-o-orixa-e-a-lua-encontros-em-23-de-abril",
+      "permanent": true
+    },
+    {
+      "source": "/post/o-guerreiro-o-orix%C3%A1-e-a-lua-encontros-em-23-de-abril",
+      "destination": "/post/o-guerreiro-o-orixa-e-a-lua-encontros-em-23-de-abril",
+      "permanent": true
+    },
+    {
+      "source": "/post/o-céu-como-guia-saberes-tempos-e-a-construção-do-olhar-1",
+      "destination": "/post/o-ceu-como-guia-saberes-tempos-e-a-construcao-do-olhar",
+      "permanent": true
+    },
+    {
+      "source": "/post/o-c%C3%A9u-como-guia-saberes-tempos-e-a-constru%C3%A7%C3%A3o-do-olhar-1",
+      "destination": "/post/o-ceu-como-guia-saberes-tempos-e-a-construcao-do-olhar",
+      "permanent": true
+    },
+    {
+      "source": "/post/química-dos-astros-o-mapa-como-roteiro-e-antecipação",
+      "destination": "/post/quimica-dos-astros-o-mapa-como-roteiro-e-antecipacao",
+      "permanent": true
+    },
+    {
+      "source": "/post/qu%C3%ADmica-dos-astros-o-mapa-como-roteiro-e-antecipa%C3%A7%C3%A3o",
+      "destination": "/post/quimica-dos-astros-o-mapa-como-roteiro-e-antecipacao",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/admin/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    }
+  ]
+}

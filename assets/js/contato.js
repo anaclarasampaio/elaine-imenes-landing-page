@@ -1,4 +1,4 @@
-/* Contato — copiar o e-mail e enviar o formulário (Netlify Forms) sem sair da página. */
+/* Contato — copiar o e-mail e enviar o formulário (FormSubmit) sem sair da página. */
 (function () {
   'use strict';
 
@@ -30,14 +30,20 @@
   }
 
   form.addEventListener('submit', function (e) {
-    if (!window.fetch) return; // navegador antigo: envio normal, cai em obrigado.html
+    if (!window.fetch) return; // navegador antigo: envio normal pelo FormSubmit, que volta para obrigado
     e.preventDefault();
     status.textContent = '';
     button.disabled = true;
-    var body = new URLSearchParams(new FormData(form)).toString();
-    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
-      .then(function (r) {
-        if (!r.ok) throw new Error(r.status);
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = v; });
+    if (data._honey) return; // robô de spam
+    data._replyto = data.email; // responder no e-mail vai direto para quem escreveu
+    fetch('https://formsubmit.co/ajax/elaineimenes.astrologia@gmail.com', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data)
+    })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) {
+        if (!x.ok || String(x.j.success) === 'false') throw new Error(x.j.message || 'erro');
         form.hidden = true;
         sent.hidden = false; sent.scrollIntoView({ behavior: 'smooth', block: 'center' });
       })

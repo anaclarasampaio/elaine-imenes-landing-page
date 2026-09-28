@@ -96,10 +96,13 @@
   </div>
 
   <div class="ct-letter-wrap">
-    <!-- Netlify Forms: as mensagens aparecem no painel da Netlify e são enviadas para o e-mail da Elaine -->
-    <form class="ct-form" name="contato" method="POST" action="obrigado.html" data-netlify="true" netlify-honeypot="empresa" data-ct-form>
-      <input type="hidden" name="form-name" value="contato">
-      <p class="ct-hp" aria-hidden="true"><label>Não preencha: <input name="empresa" tabindex="-1" autocomplete="off"></label></p>
+    <!-- FormSubmit: as mensagens chegam direto no e-mail da Elaine (a primeira pede uma confirmação por e-mail) -->
+    <form class="ct-form" name="contato" method="POST" action="https://formsubmit.co/elaineimenes.astrologia@gmail.com" data-ct-form>
+      <input type="hidden" name="_subject" value="Nova mensagem pelo site">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://www.elaineimenes.com/obrigado">
+      <p class="ct-hp" aria-hidden="true"><label>Não preencha: <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
 
       <div class="ct-row">
         <div class="ct-field">
@@ -150,6 +153,6 @@
 
 <script src="assets/js/footer.js?v=6"></script>
 <script src="assets/js/script.js" defer></script>
-<script src="assets/js/contato.js?v=2" defer></script>
+<script src="assets/js/contato.js?v=3" defer></script>
 </body>
 </html>

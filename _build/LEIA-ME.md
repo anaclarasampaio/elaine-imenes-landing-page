@@ -1,32 +1,38 @@
-# Sala de Leitura — como funciona
+# Site da Elaine Imenes — como funciona
 
-Os textos ficam em `content/posts/*.md` (um arquivo por texto). O script
-`_build/build.mjs` transforma cada um numa página em `post/`, atualiza a lista da
-Sala de Leitura, os "Textos recentes" da página inicial, o `sitemap.xml` e o
-`_redirects` (endereços antigos do Wix → novos).
+Os textos da Sala de Leitura ficam em `content/posts/*.md` e os eventos da Agenda em
+`content/eventos/*.md` (um arquivo por item). O script `_build/build.mjs` transforma cada
+texto numa página em `post/`, atualiza a lista da Sala de Leitura, os "Textos recentes" da
+página inicial, a Agenda, o `sitemap.xml` e o `vercel.json` (hospedagem e endereços antigos
+do Wix → novos).
 
 - Gerar tudo no computador: `node _build/build.mjs`
-- Não edite `post/*.html` à mão: essas páginas são refeitas a cada build.
+- Não edite `post/*.html` nem `vercel.json` à mão: são refeitos a cada build.
 - O visual das páginas de texto está em `_build/post-template.html` e `assets/css/blog.css`.
 
-## Colocar no ar (Netlify) — uma vez só
+## Colocar no ar (Vercel) — uma vez só
 
-1. **Netlify → Add new site → Import from Git →** escolher o repositório
-   `anaclarasampaio/elaine-imenes-landing-page`. Comando e pasta de publicação vêm do `netlify.toml`.
+1. **Vercel → Add New → Project →** importar o repositório
+   `anaclarasampaio/elaine-imenes-landing-page`. Em *Framework Preset*, deixar **Other**.
+   Não precisa mudar mais nada: o comando de build e a pasta vêm do `vercel.json`.
 2. **Login do painel (GitHub OAuth).** No GitHub: *Settings → Developer settings →
    OAuth Apps → New OAuth App*.
-   - Homepage URL: o endereço do site (ex.: `https://elaineimenes.netlify.app`)
-   - Authorization callback URL: `https://api.netlify.com/auth/done`
+   - Homepage URL: o endereço do site (ex.: `https://elaine-imenes-landing-page.vercel.app`)
+   - Authorization callback URL: o mesmo endereço + `/api/callback`
+     (ex.: `https://elaine-imenes-landing-page.vercel.app/api/callback`)
 
    Copie o *Client ID* e gere um *Client secret*.
-3. **Netlify → Site configuration → Access & security → OAuth → Install provider →
-   GitHub**, colando o Client ID e o secret.
+3. **Vercel → projeto → Settings → Environment Variables:** criar
+   `GITHUB_CLIENT_ID` e `GITHUB_CLIENT_SECRET` com os valores do passo 2 e fazer um
+   novo deploy (*Deployments → ⋯ → Redeploy*).
 4. **Acesso da Elaine:** ela cria uma conta no GitHub e é adicionada ao repositório
    com permissão de escrita (*Settings → Collaborators*).
-5. **Domínio:** em *Domain management*, adicionar `elaineimenes.com` e apontar o DNS
-   para a Netlify. Antes disso, migrar as páginas que ainda estão só no Wix
-   (listadas em `_build/redirects.base`).
-
+5. **Domínio:** em *Settings → Domains*, adicionar `elaineimenes.com` e `www.elaineimenes.com`
+   e ajustar o DNS como a Vercel indicar. Depois, **trocar no OAuth App do GitHub** a
+   Homepage URL e a callback URL para `https://www.elaineimenes.com/api/callback`.
+   Antes de apontar o domínio, migrar as páginas que ainda estão só no Wix:
+   Programa Céu Interno, Entre Estrelas e Caminhos, A Lua, a Mãe e o Espelho da Alma e
+   O Mapa dos Encontros.
 
 ## Como a Elaine publica um texto
 
@@ -42,18 +48,18 @@ edite e publique de novo.
 
 ## Agenda
 
-Os eventos ficam em `content/eventos/*.md` e são cadastrados no painel, em **Agenda → Novo evento**
-(nome, data e hora, tipo, formato, onde, descrição e link). A página separa sozinha os próximos
-eventos dos que já aconteceram, mostra quanto falta para o próximo e oferece o botão
-"Adicionar à minha agenda" (Google Agenda).
+Os eventos são cadastrados no painel, em **Agenda → Novo evento** (nome, data e hora, tipo,
+formato, onde, descrição e link). A página separa sozinha os próximos eventos dos que já
+aconteceram, mostra quanto falta para o próximo e oferece o botão "Adicionar à minha agenda"
+(Google Agenda).
 
-## Formulário de contato (Netlify Forms)
+## Formulário de contato (FormSubmit)
 
-O formulário da página Contato já está pronto para o Netlify Forms (grátis até 100 mensagens por mês).
-Depois do primeiro deploy:
+As mensagens do formulário da página Contato chegam direto em
+`elaineimenes.astrologia@gmail.com`, pelo serviço gratuito FormSubmit (formsubmit.co).
 
-1. **Netlify → Forms →** conferir se o formulário "contato" apareceu e ativar a detecção de formulários, se pedir.
-2. **Forms → Form notifications → Add notification → Email notification**, para
-   `elaineimenes.astrologia@gmail.com`.
-
-As mensagens também ficam guardadas no painel da Netlify. Há um campo escondido contra spam.
+- **Na primeira mensagem**, o FormSubmit manda para esse e-mail um pedido de confirmação
+  ("Activate Form"). A Elaine precisa clicar em ativar uma única vez; a partir daí todas as
+  mensagens chegam normalmente. Vale mandar uma mensagem de teste logo depois do deploy.
+- Ao responder o e-mail, a resposta vai direto para quem escreveu.
+- Há um campo escondido contra spam.

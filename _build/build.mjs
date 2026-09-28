@@ -4,8 +4,8 @@
  *
  * Para cada texto, cria post/<slug>.html usando _build/post-template.html.
  * Também atualiza a lista de textos em sala-de-leitura.html, os "Textos recentes"
- * da página inicial e o arquivo _redirects (endereços antigos do Wix → novos).
- * Não precisa de nenhuma dependência: roda com o Node puro, local ou na Netlify.
+ * da página inicial e o vercel.json (hospedagem e endereços antigos do Wix → novos).
+ * Não precisa de nenhuma dependência: roda com o Node puro, local ou na Vercel.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -175,18 +175,36 @@ replaceBetween('inicio.html', 'RECENT_POSTS', posts.slice(0, 3).map((p) => `    
       <span class="hm-article-more">Ler o texto <span aria-hidden="true">→</span></span>
     </a>`).join('\n'));
 
-// _redirects: páginas e posts do site antigo apontam para os endereços novos
-const base = fs.readFileSync(path.join(ROOT, '_build', 'redirects.base'), 'utf8').trim();
-const postRedirects = posts.filter((p) => p.original).flatMap((p) => {
-  const oldPath = new URL(p.original).pathname; // já vem codificado (%C3%A7…)
-  const decoded = decodeURIComponent(oldPath);
-  const target = `/post/${p.slug}`;
-  const lines = [];
-  if (decodeURIComponent(oldPath) !== target) lines.push(`${oldPath}  ${target}  301!`);
-  if (decoded !== oldPath && decoded !== target) lines.push(`${decoded}  ${target}  301!`);
-  return lines;
+// vercel.json: configuração da hospedagem, com os endereços antigos do Wix → novos.
+// A Vercel lê este arquivo antes do build, então ele é gerado aqui e vai junto no commit.
+const oldRedirects = [
+  ['/saladeleitura', '/sala-de-leitura'],
+  ['/oceumecontou', '/o-ceu-me-contou'],
+  ['/oceumecontou-saibamais', '/o-ceu-me-contou-saiba-mais'],
+  ['/formação-profissional-em-astrologia', '/cursos'],
+  ['/depoimentos', '/inicio#depoimentos'],
+  ['/blog', '/sala-de-leitura'],
+  ...posts.filter((p) => p.original).map((p) => [decodeURIComponent(new URL(p.original).pathname), `/post/${p.slug}`]),
+].filter(([from, to]) => from !== to);
+// cada endereço com acento entra nas duas formas (com acento e codificado)
+const redirects = oldRedirects.flatMap(([from, to]) => {
+  const enc = encodeURI(from);
+  return (enc !== from ? [from, enc] : [from]).map((source) => ({ source, destination: to, permanent: true }));
 });
-fs.writeFileSync(path.join(ROOT, '_redirects'), `${base}\n\n# posts do blog antigo (gerado por _build/build.mjs)\n${postRedirects.join('\n')}\n`);
+const vercel = {
+  $schema: 'https://openapi.vercel.sh/vercel.json',
+  buildCommand: 'node _build/build.mjs',
+  outputDirectory: '.',
+  cleanUrls: true,
+  trailingSlash: false,
+  rewrites: [{ source: '/', destination: '/inicio' }],
+  redirects,
+  headers: [
+    { source: '/admin/(.*)', headers: [{ key: 'X-Robots-Tag', value: 'noindex' }] },
+    { source: '/assets/(.*)', headers: [{ key: 'Cache-Control', value: 'public, max-age=604800' }] },
+  ],
+};
+fs.writeFileSync(path.join(ROOT, 'vercel.json'), JSON.stringify(vercel, null, 2) + '\n');
 
 // sitemap.xml
 const pages = ['inicio.html', 'o-ceu-me-contou.html', 'cursos.html', 'ciclo-basico.html', 'sobre.html', 'consultas.html', 'sala-de-leitura.html', 'agenda.html', 'contato.html'];
