@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Painel — Sala de Leitura — Elaine Imenes</title>
+<link rel="icon" href="../assets/img/logo.png">
+</head>
+<body>
+<!-- Painel de publicação (Decap CMS). A configuração fica em config.yml, nesta mesma pasta. -->
+<script src="https://cdn.jsdelivr.net/npm/decap-cms@3.16.3/dist/decap-cms.js"></script>
+<script>
+  // a pré-visualização usa o mesmo visual das páginas dos textos
+  CMS.registerPreviewStyle('../assets/css/style.css');
+  CMS.registerPreviewStyle('../assets/css/blog.css');
+  CMS.registerPreviewStyle('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap');
+  CMS.registerPreviewTemplate('posts', function (props) {
+    var h = window.h || React.createElement;
+    var entry = props.entry;
+    var cover = entry.getIn(['data', 'cover']);
+    var coverUrl = cover ? props.getAsset(cover).toString() : '';
+    return h('article', { className: 'pt' },
+      h('header', { className: 'pt-head' },
+        h('h1', {}, entry.getIn(['data', 'title']) || 'Título do texto'),
+        h('div', { className: 'pt-meta' }, h('span', {}, h('strong', {}, 'Elaine Imenes')))
+      ),
+      coverUrl ? h('figure', { className: 'pt-cover' }, h('img', { src: coverUrl })) : null,
+      h('div', { className: 'pt-body' }, props.widgetFor('body'))
+    );
+  });
+</script>
+</body>
+</html>

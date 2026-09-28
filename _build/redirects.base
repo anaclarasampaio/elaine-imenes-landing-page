@@ -1,0 +1,21 @@
+# Netlify: redirecionamentos do site antigo (Wix) para o novo.
+# Este arquivo é a parte fixa; _build/build.mjs acrescenta os posts e grava em _redirects.
+# Formato: origem  destino  código   (o "!" força o redirecionamento mesmo se existir arquivo)
+
+# a raiz mostra a página inicial
+/                                              /inicio                                200!
+
+# páginas do site antigo
+/saladeleitura                                 /sala-de-leitura                       301!
+/oceumecontou                                  /o-ceu-me-contou                       301!
+/oceumecontou-saibamais                        /o-ceu-me-contou-saiba-mais            301!
+/forma%C3%A7%C3%A3o-profissional-em-astrologia /cursos                                301!
+/formação-profissional-em-astrologia           /cursos                                301!
+/depoimentos                                   /inicio#depoimentos                    301!
+/blog                                          /sala-de-leitura                       301!
+
+# ainda não migradas: precisam ganhar página no site novo antes de o domínio sair do Wix
+# /programa-ceu-interno
+# /entre-estrelas-e-caminhos
+# /a-lua-a-mae-e-o-espelho-da-alma
+# /omapadosencontros

@@ -1,0 +1,39 @@
+# Netlify: redirecionamentos do site antigo (Wix) para o novo.
+# Este arquivo é a parte fixa; _build/build.mjs acrescenta os posts e grava em _redirects.
+# Formato: origem  destino  código   (o "!" força o redirecionamento mesmo se existir arquivo)
+
+# a raiz mostra a página inicial
+/                                              /inicio                                200!
+
+# páginas do site antigo
+/saladeleitura                                 /sala-de-leitura                       301!
+/oceumecontou                                  /o-ceu-me-contou                       301!
+/oceumecontou-saibamais                        /o-ceu-me-contou-saiba-mais            301!
+/forma%C3%A7%C3%A3o-profissional-em-astrologia /cursos                                301!
+/formação-profissional-em-astrologia           /cursos                                301!
+/depoimentos                                   /inicio#depoimentos                    301!
+/blog                                          /sala-de-leitura                       301!
+
+# ainda não migradas: precisam ganhar página no site novo antes de o domínio sair do Wix
+# /programa-ceu-interno
+# /entre-estrelas-e-caminhos
+# /a-lua-a-mae-e-o-espelho-da-alma
+# /omapadosencontros
+
+# posts do blog antigo (gerado por _build/build.mjs)
+/post/o-equilibrio-que-se-move-1  /post/o-equilibrio-que-se-move  301!
+/post/amamentacoo-lua-e-vinculos-o-alimento-que-vai-alem-do-leite  /post/amamentacao-lua-e-vinculos-o-alimento-que-vai-alem-do-leite  301!
+/post/para-que-servem-as-previs%C3%B5es-astrol%C3%B3gicas  /post/para-que-servem-as-previsoes-astrologicas  301!
+/post/para-que-servem-as-previsões-astrológicas  /post/para-que-servem-as-previsoes-astrologicas  301!
+/post/s%C3%A3o-jo%C3%A3o-xang%C3%B4-astrologia-e-os-maias-o-c%C3%A9u-como-medida-da-vida-na-terra  /post/sao-joao-xango-astrologia-e-os-maias-o-ceu-como-medida-da-vida-na-terra  301!
+/post/são-joão-xangô-astrologia-e-os-maias-o-céu-como-medida-da-vida-na-terra  /post/sao-joao-xango-astrologia-e-os-maias-o-ceu-como-medida-da-vida-na-terra  301!
+/post/o-mapa-dos-encontros-o-roteiro-da-atra%C3%A7%C3%A3o-e-da-conviv%C3%AAncia  /post/o-mapa-dos-encontros-o-roteiro-da-atracao-e-da-convivencia  301!
+/post/o-mapa-dos-encontros-o-roteiro-da-atração-e-da-convivência  /post/o-mapa-dos-encontros-o-roteiro-da-atracao-e-da-convivencia  301!
+/post/o-feminino-maternal-da-promessa-%C3%A0-realidade-do-mapa  /post/o-feminino-maternal-da-promessa-a-realidade-do-mapa  301!
+/post/o-feminino-maternal-da-promessa-à-realidade-do-mapa  /post/o-feminino-maternal-da-promessa-a-realidade-do-mapa  301!
+/post/o-guerreiro-o-orix%C3%A1-e-a-lua-encontros-em-23-de-abril  /post/o-guerreiro-o-orixa-e-a-lua-encontros-em-23-de-abril  301!
+/post/o-guerreiro-o-orixá-e-a-lua-encontros-em-23-de-abril  /post/o-guerreiro-o-orixa-e-a-lua-encontros-em-23-de-abril  301!
+/post/o-c%C3%A9u-como-guia-saberes-tempos-e-a-constru%C3%A7%C3%A3o-do-olhar-1  /post/o-ceu-como-guia-saberes-tempos-e-a-construcao-do-olhar  301!
+/post/o-céu-como-guia-saberes-tempos-e-a-construção-do-olhar-1  /post/o-ceu-como-guia-saberes-tempos-e-a-construcao-do-olhar  301!
+/post/qu%C3%ADmica-dos-astros-o-mapa-como-roteiro-e-antecipa%C3%A7%C3%A3o  /post/quimica-dos-astros-o-mapa-como-roteiro-e-antecipacao  301!
+/post/química-dos-astros-o-mapa-como-roteiro-e-antecipação  /post/quimica-dos-astros-o-mapa-como-roteiro-e-antecipacao  301!

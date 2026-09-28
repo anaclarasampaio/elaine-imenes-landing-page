@@ -1,0 +1,82 @@
+# Painel de publicação da Sala de Leitura (Decap CMS).
+#
+# O painel grava cada texto como um arquivo Markdown no repositório do site.
+# A Netlify percebe a mudança, roda _build/build.mjs e publica a página nova
+# em cerca de um minuto.
+#
+# Os caminhos abaixo partem da raiz do repositório (que é a raiz do site).
+
+backend:
+  name: github
+  repo: anaclarasampaio/elaine-imenes
+  branch: main
+  commit_messages:
+    create: 'Sala de Leitura: novo texto "{{slug}}"'
+    update: 'Sala de Leitura: atualiza "{{slug}}"'
+    delete: 'Sala de Leitura: remove "{{slug}}"'
+    uploadMedia: 'Sala de Leitura: envia imagem "{{path}}"'
+    deleteMedia: 'Sala de Leitura: remove imagem "{{path}}"'
+
+# para testar no computador: rode "npx decap-server" na raiz do repositório e abra /admin
+local_backend: true
+
+locale: pt
+site_url: https://www.elaineimenes.com
+display_url: https://www.elaineimenes.com
+logo_url: /assets/img/logo.png
+
+media_folder: assets/img/blog
+public_folder: /assets/img/blog
+
+collections:
+  - name: posts
+    label: Sala de Leitura
+    label_singular: texto
+    description: Os textos publicados na Sala de Leitura. Clique em "Novo texto" para escrever um.
+    folder: content/posts
+    create: true
+    slug: '{{slug}}'
+    preview_path: post/{{slug}}
+    sortable_fields: ['date', 'title']
+    summary: '{{title}} · {{date | date("DD/MM/YYYY")}}{{draft | ternary(" · rascunho", "")}}'
+    view_filters:
+      - label: Rascunhos
+        field: draft
+        pattern: true
+    fields:
+      - label: Título
+        name: title
+        widget: string
+      - label: Data de publicação
+        name: date
+        widget: datetime
+        date_format: DD/MM/YYYY
+        time_format: HH:mm
+        hint: Os textos aparecem do mais recente para o mais antigo.
+      - label: Imagem de capa
+        name: cover
+        widget: image
+        required: false
+        hint: Aparece no topo do texto e no card da Sala de Leitura. Prefira imagens na horizontal.
+      - label: Resumo
+        name: excerpt
+        widget: text
+        required: false
+        hint: Duas ou três frases que aparecem no card. Se ficar vazio, o site usa o começo do texto.
+      - label: Rascunho
+        name: draft
+        widget: boolean
+        default: false
+        required: false
+        hint: Ligado, o texto fica guardado no painel mas não aparece no site.
+      - label: Texto
+        name: body
+        widget: markdown
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: [image]
+        modes: [rich_text, raw]
+        hint: 'Para referências no fim, crie um título "Referências": o site mostra essa parte em letra menor.'
+      - label: Endereço no site antigo
+        name: original_url
+        widget: hidden
+        required: false

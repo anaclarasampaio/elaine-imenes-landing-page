@@ -1,0 +1,215 @@
+/* Quem sou eu — o símbolo da página é a constelação de Câncer, o signo da Elaine.
+   A foto vive dentro de uma forma orgânica que respira; o resto da página
+   alterna céu e papel, com a assinatura dela no fechamento. */
+
+.sb { --peach: #f6c8a4; --paper: #fbf3e8; }
+.sb .btn-ghost { border-radius: 100px; }
+
+/* ═══ Hero ═══ */
+.sb-hero {
+  position: relative; overflow: hidden; padding: 90px 24px 150px;
+  background: radial-gradient(ellipse 70% 80% at 75% 45%, #24406a 0%, #172e50 45%, #0d1a2e 100%);
+}
+.sb-hero-stars { position: absolute; inset: 0; pointer-events: none; }
+.sb-hero-inner {
+  position: relative; z-index: 1; max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: 1.05fr .95fr; gap: 50px; align-items: center;
+}
+.sb-hero .eyebrow { color: var(--accent); }
+.sb-title { color: var(--white); font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1.04; margin-bottom: 22px; }
+.sb-title .w { display: inline-block; }
+.sb-title em .w {
+  font-style: italic;
+  background: linear-gradient(100deg, #f4e2b0, var(--accent) 55%, var(--peach));
+  -webkit-background-clip: text; background-clip: text; color: transparent; padding-right: .05em;
+}
+.sb-hero-lead { color: rgba(255,255,255,.78); font-size: 1.15rem; line-height: 1.7; max-width: 480px; margin-bottom: 30px; }
+.sb-hero-roles { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.sb-hero-roles li {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 16px; border-radius: 100px; font-size: .82rem; font-weight: 600; letter-spacing: .04em;
+  color: var(--accent); border: 1px solid rgba(214,177,112,.45); background: rgba(214,177,112,.06);
+}
+.sb-hero-roles li::before {
+  content: ''; width: 8px; height: 8px; background: var(--accent);
+  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+}
+
+.sb-hero-visual { position: relative; aspect-ratio: 1; max-width: 500px; width: 100%; justify-self: center; }
+.sb-blob {
+  position: absolute; inset: 12% 8% 8% 14%; overflow: hidden;
+  border-radius: 58% 42% 50% 50% / 48% 56% 44% 52%;
+  box-shadow: 0 30px 70px rgba(0,0,0,.45), 0 0 0 10px rgba(214,177,112,.12);
+  animation: sbBlob 14s ease-in-out infinite;
+}
+.sb-blob img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); }
+@keyframes sbBlob {
+  0%, 100% { border-radius: 58% 42% 50% 50% / 48% 56% 44% 52%; }
+  33%      { border-radius: 44% 56% 42% 58% / 56% 44% 58% 42%; }
+  66%      { border-radius: 52% 48% 60% 40% / 42% 60% 40% 58%; }
+}
+/* a constelação de Câncer no céu ao lado da foto, sem passar pelo rosto */
+.sb-const { position: absolute; left: -46%; top: -6%; width: 74%; height: auto; z-index: 0; pointer-events: none; overflow: visible; }
+.sb-blob { z-index: 1; }
+.sb-const-lines path {
+  fill: none; stroke: rgba(244,226,176,.75); stroke-width: 1.4; stroke-linecap: round;
+  stroke-dasharray: 140; stroke-dashoffset: 0;
+}
+.sb-const-stars circle {
+  fill: #fff8e6; filter: drop-shadow(0 0 6px rgba(255,243,214,.95));
+  animation: sbTwinkle 3.2s ease-in-out infinite; animation-delay: calc(var(--i) * .4s);
+  transform-box: fill-box; transform-origin: center;
+}
+@keyframes sbTwinkle { 0%, 100% { opacity: .7; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.15); } }
+.sb-const-label { font-family: 'Caveat', cursive; font-size: 22px; fill: var(--accent); }
+.sb-note {
+  position: absolute; left: -2%; bottom: 6%; z-index: 3;
+  font-family: 'Caveat', cursive; font-size: 1.6rem; color: #241605;
+  background: linear-gradient(135deg, #f4e2b0, var(--accent)); padding: 6px 18px; border-radius: 100px;
+  transform: rotate(-6deg); box-shadow: 0 10px 24px rgba(0,0,0,.3);
+}
+.sb-wave { position: absolute; left: 0; bottom: -1px; width: 100%; height: 90px; }
+.sb-wave path { fill: var(--white); }
+
+/* ═══ História ═══ */
+.sb-story { background: var(--white); padding-top: 60px; }
+.sb-story-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 70px; align-items: center; }
+.sb-story h2 { font-size: clamp(2rem, 3.8vw, 2.8rem); line-height: 1.18; margin-bottom: 22px; }
+.sb-lead { font-family: 'Fraunces', serif; font-size: 1.25rem; line-height: 1.6; color: var(--ink); margin-bottom: 18px; }
+.sb-story-text p:not(.sb-lead) { color: var(--ink-soft); line-height: 1.85; margin-bottom: 16px; }
+.sb-story-photo { position: relative; justify-self: center; max-width: 360px; width: 100%; }
+.sb-story-photo::before {
+  content: ''; position: absolute; inset: -16px 16px 16px -16px; border-radius: 24px;
+  background: var(--cream-deep); z-index: 0; transform: rotate(-3deg);
+}
+.sb-story-photo img {
+  position: relative; z-index: 1; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 22px;
+  box-shadow: 0 30px 60px rgba(15,27,46,.18);
+}
+.sb-story-photo figcaption {
+  position: relative; z-index: 1; margin-top: 16px; text-align: center;
+  font-family: 'Caveat', cursive; font-size: 1.45rem; color: var(--accent-deep);
+}
+
+/* ═══ Duas linguagens ═══ */
+.sb-bridge { background: var(--cream); }
+.sb-bridge-grid { display: grid; grid-template-columns: 1fr 120px 1fr; gap: 20px; align-items: center; max-width: 980px; }
+.sb-side {
+  padding: 36px 32px; border-radius: 24px; height: 100%;
+  box-shadow: 0 20px 44px rgba(15,27,46,.1);
+  transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s;
+}
+.sb-side:hover { transform: translateY(-6px); box-shadow: 0 30px 60px rgba(15,27,46,.16); }
+.sb-side--science { background: var(--white); border: 1px solid var(--line); }
+.sb-side--sky { background: linear-gradient(160deg, var(--ink) 0%, #1a2d4a 60%, #24406a 100%); }
+.sb-side-icon {
+  width: 56px; height: 56px; border-radius: 50%; margin-bottom: 20px;
+  display: flex; align-items: center; justify-content: center;
+}
+.sb-side--science .sb-side-icon { background: var(--cream-deep); color: var(--accent-deep); }
+.sb-side--sky .sb-side-icon { background: linear-gradient(135deg, #f4e2b0, var(--accent)); color: #241605; }
+.sb-side-icon svg { width: 26px; height: 26px; }
+.sb-side h3 { font-size: 1.5rem; margin-bottom: 18px; }
+.sb-side--sky h3 { color: var(--white); }
+.sb-side ul { list-style: none; display: grid; gap: 12px; }
+.sb-side li { display: flex; align-items: center; gap: 12px; font-size: .95rem; }
+.sb-side--science li { color: var(--ink); }
+.sb-side--sky li { color: rgba(255,255,255,.88); }
+.sb-side li::before { content: ''; flex-shrink: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.sb-bridge-mid svg { width: 100%; height: auto; }
+.sb-mid-ring { fill: none; stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 3 7; stroke-linecap: round; transform-origin: 60px 60px; animation: sbSpin 30s linear infinite; }
+.sb-mid-star { fill: var(--accent); transform-origin: 60px 60px; animation: sbPulse 3s ease-in-out infinite; }
+@keyframes sbSpin { to { transform: rotate(360deg); } }
+@keyframes sbPulse { 0%, 100% { transform: scale(.9); opacity: .8; } 50% { transform: scale(1.1); opacity: 1; } }
+
+/* ═══ Abordagem ═══ */
+.sb-approach {
+  position: relative; overflow: hidden; padding: 120px 24px; text-align: center;
+  background: radial-gradient(ellipse 60% 70% at 50% 50%, #24406a 0%, #142842 55%, #0d1a2e 100%);
+}
+.sb-approach::before, .sb-approach::after {
+  content: ''; position: absolute; border-radius: 50%; border: 1px solid rgba(214,177,112,.18); pointer-events: none;
+  left: 50%; top: 50%; transform: translate(-50%, -50%);
+}
+.sb-approach::before { width: 640px; height: 640px; }
+.sb-approach::after  { width: 900px; height: 900px; border-style: dashed; animation: sbSpinCenter 90s linear infinite; }
+@keyframes sbSpinCenter { to { transform: translate(-50%, -50%) rotate(360deg); } }
+.sb-approach-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+.sb-approach .eyebrow { color: var(--accent); }
+.sb-approach h2 { color: var(--white); font-size: clamp(2rem, 4vw, 2.9rem); line-height: 1.2; margin-bottom: 20px; }
+.sb-approach-inner > p:not(.sb-sign) { color: rgba(255,255,255,.75); font-size: 1.06rem; line-height: 1.8; max-width: 620px; margin: 0 auto 48px; }
+.sb-quote {
+  font-family: 'Fraunces', serif; font-style: italic; font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.45; color: var(--white);
+}
+.sb-quote .w { display: inline-block; opacity: .18; }
+.sb-sign { font-family: 'Caveat', cursive; font-size: 2rem; color: var(--accent); margin-top: 18px; }
+
+/* ═══ Como eu ensino ═══ */
+.sb-teach { background: var(--white); }
+.sb-teach-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 70px; align-items: center; max-width: 1000px; }
+.sb-teach-num {
+  position: relative; aspect-ratio: 1; border-radius: 50%; max-width: 300px; width: 100%; justify-self: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: var(--cream); border: 1px solid var(--line);
+}
+.sb-teach-num::before {
+  content: ''; position: absolute; inset: -14px; border-radius: 50%;
+  border: 1.5px dashed var(--accent); animation: sbSpin 40s linear infinite;
+}
+.sb-teach-num strong { font-family: 'Fraunces', serif; font-size: 6rem; line-height: 1; font-weight: 600; color: var(--navy); }
+.sb-teach-num span { font-size: .8rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-deep); margin-top: 6px; }
+.sb-teach h2 { font-size: clamp(1.9rem, 3.4vw, 2.5rem); margin-bottom: 20px; }
+.sb-teach p:not(.sb-lead) { color: var(--ink-soft); line-height: 1.8; margin-bottom: 24px; }
+.sb-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--navy); padding-bottom: 4px; border-bottom: 2px solid var(--accent); }
+.sb-link span { transition: transform .3s; }
+.sb-link:hover span { transform: translateX(6px); }
+
+/* ═══ Em poucas linhas ═══ */
+.sb-facts { background: linear-gradient(180deg, var(--cream) 0%, var(--paper) 100%); }
+.sb-chips { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; max-width: 880px; }
+.sb-chips li {
+  padding: 14px 24px; border-radius: 100px; font-family: 'Fraunces', serif; font-size: 1.08rem; color: var(--navy);
+  background: var(--white); border: 1px solid var(--line); box-shadow: 0 10px 24px rgba(15,27,46,.07);
+  transform: rotate(var(--r, 0deg)); transition: transform .35s cubic-bezier(.3,1.6,.5,1), background .3s, color .3s, box-shadow .3s;
+  cursor: default;
+}
+.sb-chips li:hover { transform: rotate(0) scale(1.08); background: var(--navy); color: var(--accent); box-shadow: 0 16px 34px rgba(15,27,46,.2); }
+
+/* ═══ CTA com assinatura ═══ */
+.sb-cta { padding: 110px 24px 90px; text-align: center; background: var(--paper); border-top: 1px solid var(--line); }
+.sb-cta-inner { max-width: 640px; margin: 0 auto; }
+.sb-cta h2 { font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.2; margin-bottom: 16px; }
+.sb-cta p { color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 32px; }
+.sb-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.sb-cta .btn-ghost { color: var(--navy); border-color: var(--navy); }
+.sb-cta .btn-ghost:hover { background: var(--navy); color: var(--white); }
+.sb-signature { position: relative; display: inline-block; margin-top: 56px; }
+.sb-signature span { font-family: 'Caveat', cursive; font-size: 4rem; font-weight: 700; color: var(--navy); line-height: 1; }
+.sb-signature svg { position: absolute; left: -10%; bottom: -14px; width: 120%; height: 40px; overflow: visible; }
+.sb-signature path { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 300; stroke-dashoffset: 0; }
+
+/* ═══ Responsivo ═══ */
+@media (max-width: 900px) {
+  .sb-hero { padding: 60px 20px 130px; }
+  .sb-hero-inner { grid-template-columns: 1fr; gap: 30px; }
+  .sb-hero-visual { max-width: 360px; order: -1; }
+  .sb-const { left: -30%; width: 60%; opacity: .7; }
+  .sb-hero-copy { text-align: center; }
+  .sb-hero-lead { margin-left: auto; margin-right: auto; }
+  .sb-hero-roles { justify-content: center; }
+  .sb-story-grid, .sb-teach-grid { grid-template-columns: 1fr; gap: 50px; }
+  .sb-bridge-grid { grid-template-columns: 1fr; }
+  .sb-bridge-mid { width: 80px; justify-self: center; }
+  .sb-teach-num { max-width: 220px; }
+  .sb-teach-num strong { font-size: 4.4rem; }
+  .sb-approach::after { display: none; }
+}
+@media (max-width: 480px) {
+  .sb-note { font-size: 1.3rem; }
+  .sb-cta-btns .btn { width: 100%; justify-content: center; }
+  .sb-signature span { font-size: 3.2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sb-quote .w { opacity: 1; }
+}
